@@ -41,7 +41,7 @@ public class problem3 {
 	 * @param arr
 	 * @param sum
 	 */
-	private static boolean sumFound(List list, int k) {
+	private static boolean sumFound(List<Integer> list, int k) {
 		List<List<Integer>> subsets = Util.ListOps.subsets(list);
 //		subsets.forEach(System.out::println);
 
