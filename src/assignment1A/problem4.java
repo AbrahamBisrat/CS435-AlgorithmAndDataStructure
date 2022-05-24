@@ -48,9 +48,7 @@ public class problem4 {
 	}
 
 	private static void swap(List<Integer> list, int i) {
-		System.out.println(list);
-		int temp;
-		temp = list.get(i);
+		int temp = list.get(i);
 		list.set(i, list.get(i+1));
 		list.set(i+1, temp);
 	}
