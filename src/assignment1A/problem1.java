@@ -9,7 +9,7 @@ import java.util.HashMap;
  *
  */
 
-public class Problem {
+public class problem1 {
 	
 	public static void main(String[] args) {
 		problemOne();
@@ -24,6 +24,20 @@ public class Problem {
 		int z = 15;
 		System.out.println(naiveSumFound(testArray, z));
 		System.out.println(hashSumFound(testArray, z));
+		
+		// Test examples
+		int[] testA = {1, 4, 2, 3};
+		z = 5;
+		System.out.println(hashSumFound(testA, z));
+		
+		int[] testB = {3, 3, 4, 7};
+		z = 6;
+		System.out.println(hashSumFound(testB, z));
+		
+		int[] testC = {1};
+		z = 2;
+		System.out.println(hashSumFound(testC, z));
+		
 	}
 	
 	// O(n2)
@@ -40,10 +54,8 @@ public class Problem {
 		HashMap<Integer, Integer> hashArray = new HashMap<>();
 		for(int each : arr) {
 			hashArray.put(each, each);
-			if(hashArray.containsValue(z - each) && each != z - each) {
-				System.out.println(each);
+			if(hashArray.containsValue(z - each) && each != z - each)
 				return true;
-			}
 		}
 		return false;
 	}
