@@ -7,11 +7,9 @@ import java.util.List;
 public class problem4 {
 	
 	public static void main(String[] args) {
-		
 		partA();
 		System.out.println("\n\n\n");
 		partB();
-		
 	}
 
 	private static void partB() {
@@ -31,11 +29,8 @@ public class problem4 {
 		List<Integer> list = new ArrayList<>();
 		for(int i = 10; i > 0; i--)
 			list.add((int) (Math.random() * 10));
-		
 		System.out.println(list);
-		
 		list = sort(list);
-		
 		System.out.println(list);
 	}
 	
