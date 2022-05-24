@@ -40,7 +40,7 @@ public class problem4 {
 	}
 	
 	public static List<Integer> sort(List<Integer> list) {
-		for(@SuppressWarnings("unused") int each : list)
+		for(int each : list)
 	        for (int i = 0; i < list.size() - 1; i++)
 	            if (list.get(i) > list.get(i+1))
 	                swap(list, i);
