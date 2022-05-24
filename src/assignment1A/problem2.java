@@ -27,16 +27,9 @@ public class problem2 {
 			throw new IllegalArgumentException("Input Array too small");
 		int smallest = Integer.MAX_VALUE;
 		int secondSmallest = Integer.MAX_VALUE;
-		boolean firstTime = true;
-		
 		
 		for(int each : arr) {
 			if(each < smallest) {
-				if(firstTime) {
-					smallest = each;
-					firstTime = !firstTime;
-					continue;
-				}
 				secondSmallest = smallest;
 				smallest = each;
 			} else if(each < secondSmallest && each > smallest)
