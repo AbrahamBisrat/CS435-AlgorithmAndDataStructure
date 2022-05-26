@@ -23,7 +23,8 @@ public class ListOps {
         subsetsHelper(list, new ArrayList<>(), nums, 0);
         return list;
     }
- 
+	
+	// helper so that the above recursion is possible in a clean manner
     private static void subsetsHelper(List<List<Integer>> list , List<Integer> resultList, List<Integer> nums, int start){
         list.add(new ArrayList<>(resultList));
         for(int i = start; i < nums.size(); i++){
