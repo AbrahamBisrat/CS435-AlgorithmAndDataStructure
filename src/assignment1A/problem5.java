@@ -14,8 +14,8 @@ public class problem5 {
 		System.out.println(orderedListSearch(problem4.sort(list), k) + " \t" + k);	
 	}
 
-	// Bisection is the best approach here.
-	// Max of 7 steps -- Mathematically sound approach.
+	// Bisection is the best approach here
+	// Max of 7 steps - more or less -- Mathematically sound approach
 	private static boolean orderedListSearch(List<Integer> list, int k) {
 		int halfMark = list.size() / 2;
 		if(list.get(halfMark) == k)
