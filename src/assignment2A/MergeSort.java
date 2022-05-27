@@ -16,22 +16,18 @@ public class MergeSort {
 		int aPosition, bPosition, resultSetPosition;
 	    aPosition = bPosition = resultSetPosition = 0;
 
-	    while(aPosition < a.length && bPosition < b.length) {
-	        if (a[aPosition] < b[bPosition]) {
+	    while(aPosition < a.length && bPosition < b.length)
+	        if (a[aPosition] < b[bPosition])
 	            resultSet[resultSetPosition++] = a[aPosition++];
-	        } else {
+	        else
 	            resultSet[resultSetPosition++] = b[bPosition++];
-	        }
-	    }
 
-	    while (aPosition < a.length) {
+	    while (aPosition < a.length)
 	        resultSet[resultSetPosition++] = a[aPosition++];
-	    }
-
-	    while (bPosition < b.length) {
+	    
+	    while (bPosition < b.length)
 	        resultSet[resultSetPosition++] = b[bPosition++];
-	    }
-			
+	    	
 		return resultSet;
 	}
 }
