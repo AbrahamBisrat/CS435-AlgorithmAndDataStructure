@@ -4,17 +4,13 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 /**
- * 
  * Improved stack implementation, push, pop, peek, isEmpty and also min
  * so that the worst case running time for any operation is O(1).
  * 
- * 
  * @author 	Er. Abraham Birat
  * @param 	<T>
- * 
  */
 public class MinStack <T extends Comparable<T>> {
-	
 	private LinkedList<T> stack = new LinkedList<>();
 	
 	/**
@@ -59,8 +55,6 @@ public class MinStack <T extends Comparable<T>> {
 		System.out.println("\n" + minStackTheSecond);
 		
 	}
-	// check for edge cases;
-	
 	
 	/**
 	 * Implementation using checks on push fail when that -min- object is no longer in stack.
