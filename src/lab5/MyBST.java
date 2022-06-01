@@ -1,4 +1,4 @@
-package bst;
+package lab5;
 
 /**
  * This is a BST that handles Integer data. The insert method has been
@@ -220,17 +220,17 @@ public class MyBST {
 		}
 	}
 
-	// ///////// testing
+	// testing
 
 	public static void main(String[] args) {
 		MyBST bst = new MyBST();
 		for (int i = 15; i >= 0; --i) {
-			bst.insert(new Integer(2 * i));
-			bst.insert(new Integer(2 * i - 5));
+			bst.insert(2 * i);
+			bst.insert(2 * i - 5);
 		}
 		bst.printTree();
-		System.out.println("Is 24 in the tree? " + bst.find(new Integer(24)));
-		System.out.println("Is 27 in the tree? " + bst.find(new Integer(27)));
+		System.out.println("Is 24 in the tree? " + bst.find(24));
+		System.out.println("Is 27 in the tree? " + bst.find(27));
 
 		System.out.println("Min: " + bst.findMin());
 		System.out.println("Is -5 a leaf? " + bst.isLeaf(-5));
