@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ReverseSinglyLinkedList {
 	public static void main(String[] args) {
-		SinglyLinkedList<String> list = new SinglyLinkedList<>();
+		SinglyLinkedListImp list = new SinglyLinkedListImp();
 		list.add("one");
 		list.add("two");
 		list.add("three");
@@ -13,11 +13,12 @@ public class ReverseSinglyLinkedList {
 		
 		System.out.println(list);
 		System.out.println(reverse(list));
+		
 	}
-	private static SinglyLinkedList<?> reverse(SinglyLinkedList<?> list) {
-		SinglyLinkedList<String> temp = new SinglyLinkedList<>();
-		for(int i = list.size(); i >= 0; i--)
-			temp.add((String) list.get(i));
+	private static SinglyLinkedListImp reverse(SinglyLinkedListImp list) {
+		SinglyLinkedListImp temp = new SinglyLinkedListImp();
+		for(int i = list.size() - 1; i >= 0; i--)
+			temp.add(list.get(list.size() - i - 1));
 		return temp;
 	}
 }
