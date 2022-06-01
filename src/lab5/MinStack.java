@@ -73,11 +73,11 @@ public class MinStack <T extends Comparable<T>> {
 		return stack.getFirst();
 	}
 	
-	public Object pop() {
+	public T pop() {
 		if(isEmpty()) throw new RuntimeException("Stack is empty");
-		Object o = stack.getFirst();
+		T t = stack.getFirst();
 		stack.removeFirst();
-		return o;
+		return t;
 	}
 	
 	public void push(T t) { 
