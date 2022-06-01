@@ -1,11 +1,13 @@
 package lab5;
 
+import java.util.NoSuchElementException;
+
 public class SinglyLinkedList <T> {
 	protected class Node <E>{
 		E data;
 		Node<E> next;
 		
-		public Node() { }
+		public Node() {}
 		
 		public Node(E data) {
 			this.data = data;
@@ -29,6 +31,18 @@ public class SinglyLinkedList <T> {
 		newHead.next = head;
 		head = newHead;
 		size++;
+	}
+	public T get(int index) {
+		Node<T> temp = head;
+		int i = 0;
+		while(temp.next != null) {
+			if(i == index) {
+				return temp.data;
+			}
+			temp = temp.next;
+			i++;
+		}
+		throw new NoSuchElementException("Index not found");
 	}
 	public void removeByValue(T t) {
 		Node<T> temp = head;
@@ -103,7 +117,6 @@ public class SinglyLinkedList <T> {
 	}
 	
 	@Override public String toString() {
-		System.out.println("here");
 		String s = "";
 		Node<T> temp = head;
 		
