@@ -10,21 +10,20 @@ import java.util.List;
  * A basic Graph class. Provides a constructor for creating a graph
  * by loading up a list of Pairs. The toString() method displays the
  * vertices and edges of a graph.
- * @author paul_
  *
  */
 public class Graph {
-	private LinkedList<Vertex> vertices = new LinkedList<Vertex>();
-	private LinkedList<Edge> edges = new LinkedList<Edge>();
-	HashMap<Vertex,LinkedList<Vertex>> adjList = new HashMap<Vertex,LinkedList<Vertex>>();
+	private LinkedList<Vertex> vertices = new LinkedList<>();
+	private LinkedList<Edge> edges = new LinkedList<>();
+	private HashMap<Vertex,LinkedList<Vertex>> adjList = new HashMap<>();
 
 	/**
 	 * Constructs a graph from a list of pairs. A pair (A,B)
 	 * is transformed into vertices A and B together with an edge A-B.
 	 */
 	public Graph(List<Pair> pairs){
-		HashMap<Vertex,Vertex> dupverts = new HashMap<Vertex,Vertex>();
-		HashMap<Edge,Edge> dupedges = new HashMap<Edge,Edge>();
+		HashMap<Vertex,Vertex> dupverts = new HashMap<>();
+		HashMap<Edge,Edge> dupedges = new HashMap<>();
 		for(Pair e : pairs){
 			//handle the vertices and edges simultaneously
 			Vertex v1 = new Vertex(e.ob1);
@@ -205,12 +204,12 @@ public class Graph {
 		l.add(new Pair("A","B"));
 		l.add(new Pair("B","C"));
 		l.add(new Pair("A", "C"));
-//		l.add(new Pair("C","D"));
-//		l.add(new Pair("F","E"));
-//		l.add(new Pair("E","A"));
-//		l.add(new Pair("F","G"));
-//		l.add(new Pair("G","H"));
-//		l.add(new Pair("H","F"));
+		l.add(new Pair("C","D"));
+		l.add(new Pair("F","E"));
+		l.add(new Pair("E","A"));
+		l.add(new Pair("F","G"));
+		l.add(new Pair("G","H"));
+		l.add(new Pair("H","F"));
 
 		Graph g = new Graph(l);
 		System.out.println(g);
