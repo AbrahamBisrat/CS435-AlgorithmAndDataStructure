@@ -34,6 +34,7 @@ public class ListOps {
             
             // remove.
             resultList.remove(resultList.size() - 1);
+            
         }
     }
 }
