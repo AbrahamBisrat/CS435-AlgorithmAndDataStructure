@@ -1,24 +1,25 @@
 package graph;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public class BreadthFirstSearch  {
-	protected HashMap<Vertex, Vertex> visitedVertices = new HashMap<>();
-	HashMap<Vertex,LinkedList<Vertex>> adjacencyList;
-	Graph graph;
-	Queue<Vertex> queue;
-	Vertex current;
+	protected HashSet<Vertex> visitedVertices = new HashSet<>();
+	private HashMap<Vertex,LinkedList<Vertex>> adjacencyList;
+	private Graph graph;
+	private Queue<Vertex> queue;
+	private Vertex current;
 
 	List<Vertex> vertices = null;
 	Iterator<Vertex> iterator = null;
 	protected int numVertices;
 
 	public BreadthFirstSearch(Graph graph){
-		queue = new LinkedList<Vertex>();
+		queue = new LinkedList<>();
 		this.graph=graph;
 		vertices =graph.vertices();
 		iterator = vertices.iterator();
@@ -27,18 +28,18 @@ public class BreadthFirstSearch  {
 		adjacencyList = graph.getAdjacencyList();
 	}
 	
-	public void start(){	
-		while(someVertexUnvisited()) {	
+	public void start(){
+		while(someVertexUnvisited()) {
 			//picks an unvisited vertex and marks it
-			handleInitialVertex();		
+			handleInitialVertex();
 			
-			//Starting from initial vertex s, marked as visited, 
+			//Starting from initial vertex s, marked as visited,
 			//adds one vertex at a time to the collection of visited vertices
 			//by choosing (in unspecified way) next vertex that is adjacent
 			//to some visited vertex
-			singleComponentLoop();	
+			singleComponentLoop();
 			
-			//performs necessary processing (for subclasses) between completions 
+			//performs necessary processing (for subclasses) between completions
 			//of successive components
 			additionalProcessing();
 		}
@@ -82,19 +83,19 @@ public class BreadthFirstSearch  {
 	protected void processVertex(Vertex w){
 		//should be overridden; by default, do nothing
 	}
-
+	
 	/////// next unvisited and next unvisited adjacent code
 	
 	public Vertex nextUnvisited() {
 		while(iterator.hasNext()){
 			Vertex next = iterator.next();
-			if(!visitedVertices.containsKey(next)){
+			if(!visitedVertices.contains(next)){
 				return next;
-
 			}
 		}
 		return null;
 	}
+	
 	public Vertex nextUnvisitedAdjacent(Vertex v) {
 		List<Vertex> listOfAdjacent = adjacencyList.get(v);
 		Iterator<Vertex> it = listOfAdjacent.iterator();
@@ -103,10 +104,10 @@ public class BreadthFirstSearch  {
 		//since whenever a vertex is encountered, it is removed after processing
 		while(it.hasNext()) {
 			Vertex u = it.next();
-			if(visitedVertices.containsKey(u)) {
+			if(visitedVertices.contains(u)) {
 				it.remove();
 			}
-			if(!visitedVertices.containsKey(u)) {
+			if(!visitedVertices.contains(u)) {
 				retVert = u;
 				it.remove();
 				return retVert;
@@ -118,27 +119,15 @@ public class BreadthFirstSearch  {
 	
 	////////// support methods
 	
-	protected void resetVisitedVertices() {
-		visitedVertices.clear();
-	}
+	protected void resetVisitedVertices() { visitedVertices.clear(); }
 
-	protected void resetVertexIterator() {
-		iterator = vertices.iterator();
-	}
+	protected void resetVertexIterator() { iterator = vertices.iterator(); }
 
-	protected void makeVertexCurrent(Vertex v) {
-		current = v;
-	}
+	protected void makeVertexCurrent(Vertex v) { current = v; }
 
-	protected boolean someVertexUnvisited(){
-		return visitedVertices.size() < numVertices;
-	}
+	protected boolean someVertexUnvisited(){ return visitedVertices.size() < numVertices; }
 
-	public boolean getHasBeenVisited(Vertex v) {
-		return visitedVertices.containsKey(v);
-	}
+	public boolean getHasBeenVisited(Vertex v) { return visitedVertices.contains(v); }
 	
-	public void setHasBeenVisited(Vertex v) {
-		visitedVertices.put(v,v);
-	}
+	public void setHasBeenVisited(Vertex v) { visitedVertices.add(v); }
 }

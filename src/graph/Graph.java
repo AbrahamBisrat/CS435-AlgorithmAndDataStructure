@@ -1,9 +1,12 @@
 package graph;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 
 /** 
@@ -15,7 +18,7 @@ import java.util.List;
 public class Graph {
 	private LinkedList<Vertex> vertices = new LinkedList<>();
 	private LinkedList<Edge> edges = new LinkedList<>();
-	private HashMap<Vertex,LinkedList<Vertex>> adjList = new HashMap<>();
+	public HashMap<Vertex,LinkedList<Vertex>> adjList = new HashMap<>();
 
 	/**
 	 * Constructs a graph from a list of pairs. A pair (A,B)
@@ -106,13 +109,16 @@ public class Graph {
 		FindSpanningTree fst = new FindSpanningTree(this);
 		return fst.computeSpanningTree();
 	}
-	//implement
-	public boolean pathExists(Vertex u, Vertex v) {
-		return false;
+	
+	public boolean pathExists(Vertex src, Vertex dst) {
+		BFS bfs = new BFS(this, new Vertex("A"));
+		return bfs.pathExists(src, dst);
 	}
 
 	public boolean isConnected() {
-		return false;
+		BFS bfs = new BFS(this, new Vertex("A"));
+//		bfs.traverse();
+		return bfs.connected();
 	}
 	
 	public int numConnectedComponents() {
@@ -121,8 +127,9 @@ public class Graph {
 
 	public boolean hasCycle() {
 		return false;
-	}
-
+	}	
+	public HashMap<Vertex,LinkedList<Vertex>> getAdjList() { return this.adjList; }
+	
 	public int shortestPathLength(Vertex u, Vertex v) {
 		return 0;
 	}
@@ -137,9 +144,7 @@ public class Graph {
 	public HashMap<Vertex,LinkedList<Vertex>> getAdjacencyList() {
 		HashMap<Vertex,LinkedList<Vertex>> copy = new HashMap<Vertex,LinkedList<Vertex>>();
 		for(Vertex v : adjList.keySet()) {
-			//LinkedList<Vertex> original = adjList.get(v);
 			copy.put(v, getListOfAdjacentVerts(v));
-
 		}
 		return copy;
 
@@ -200,20 +205,28 @@ public class Graph {
 	}
 
 	public static void main(String[] args) {
-		List<Pair> l = new ArrayList<Pair>();
+		List<Pair> l = new ArrayList<>();
 		l.add(new Pair("A","B"));
 		l.add(new Pair("B","C"));
-		l.add(new Pair("A", "C"));
+//		l.add(new Pair("A", "C"));
 		l.add(new Pair("C","D"));
-		l.add(new Pair("F","E"));
+//		l.add(new Pair("F","E"));
 		l.add(new Pair("E","A"));
-		l.add(new Pair("F","G"));
-		l.add(new Pair("G","H"));
+//		l.add(new Pair("F","G"));
 		l.add(new Pair("H","F"));
-
-		Graph g = new Graph(l);
-		System.out.println(g);
-
+		l.add(new Pair("G","H"));
 		
+		Graph g = new Graph(l);
+		System.out.println(g.getAdjacencyList() + "\n\n");
+		
+//		System.out.println(g.pathExists(new Vertex("A"), new Vertex("B")));
+//		System.out.println(g.pathExists(new Vertex("B"), new Vertex("G")));
+//		System.out.println(g.pathExists(new Vertex("B"), new Vertex("DF")));
+//		System.out.println(g.pathExists(new Vertex("H"), new Vertex("F")));
+//		System.out.println(g.pathExists(new Vertex("A"), new Vertex("D")));
+//		System.out.println(g.pathExists(new Vertex("A"), new Vertex("C")));
+		
+		System.out.println("\n\n" + g.isConnected());
+//		System.out.println(g.hasCycle());
 	}
 }
