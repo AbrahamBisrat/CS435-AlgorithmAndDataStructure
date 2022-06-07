@@ -50,7 +50,6 @@ public class MyBST {
 	// returns null if root is null
 	public Integer findMax() {
 		return findMax(root).element;
-
 	}
 
 	// node will be stored in position 0; parent will be stored in position 1
@@ -92,7 +91,6 @@ public class MyBST {
 	// returns null if root is null
 	public Integer findMin() {
 		return findMin(root).element;
-
 	}
 
 	private Node findMin(Node node) {

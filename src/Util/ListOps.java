@@ -7,7 +7,7 @@ public class ListOps {
 	
 	public static void main(String[] args) {
 		List<Integer> list = new ArrayList<>();
-		for(int i = 1; i <= 4; i++)
+		for(int i = 1; i <= 3; i++)
 			list.add(i);
         
 //        subsets(list).forEach(System.out::println);
@@ -27,14 +27,13 @@ public class ListOps {
         	// add element
             resultList.add(nums.get(i));
             
-            
             // Explore
             subsetsHelper(list, resultList, nums, i + 1);
             
             System.out.println(resultList);
-            // remove
+            
+            // remove.
             resultList.remove(resultList.size() - 1);
         }
     }
-
 }
