@@ -1,6 +1,7 @@
 package Util;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ListOps {
@@ -15,7 +16,7 @@ public class ListOps {
         
         // Another implementation
         p("\n\n");
-        p(powerSet(list.subList(0, 2)));
+        p(powerSet(list));//.subList(0, 2)));
         
 	}
 	
@@ -69,7 +70,7 @@ public class ListOps {
     	pSet.add(new ArrayList<>());
     	for(Integer each : list)
     		pSet = merge(pSet, addToAllLocations(pSet, each));
-    	return pSet;
+    	return pSet.stream().sorted(Comparator.comparing(List::size)).toList();
     }
     private static List<List<Integer>> merge(List<List<Integer>> listA, List<List<Integer>> listB) {
     	List<List<Integer>> newList = listB;
@@ -81,7 +82,6 @@ public class ListOps {
     	for(List<Integer> each : list)
 	    	for(int i = 0; i <= each.size(); i++)
 	    		resultSet.add(listInsertElementHelper(each, element, i));
-    	p(resultSet);
     	return resultSet;
     }
     private static List<Integer> listInsertElementHelper(List<Integer> list, int element, int index) {
