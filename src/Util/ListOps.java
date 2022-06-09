@@ -12,24 +12,20 @@ public class ListOps {
 		for(int i = 1; i <= 3; i++)
 			list.add(i);
         
-//        subsets(list).forEach(System.out::println);
-		Runtime runtime = Runtime.getRuntime();
-	    long usedMemoryBefore = runtime.totalMemory() - runtime.freeMemory();
-	    System.out.println("Used Memory before" + usedMemoryBefore);
-	        // working code here
-	    long usedMemoryAfter = runtime.totalMemory() - runtime.freeMemory();
-	    System.out.println("Memory increased:" + (usedMemoryAfter-usedMemoryBefore));
-	    
+		benchmark(placeHolder -> subsets(list));
         
-        timeBenchmark(placeHolder -> subsets(list));
         // Another implementation
-        timeBenchmark(placeHolder -> p(powerSet(list)));
+        benchmark(placeHolder -> p(powerSet(list)));
 	}
-	private static void timeBenchmark(Consumer<String> consumer) {
+	
+	private static void benchmark(Consumer<String> consumer) {
+		long before = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 		long startTime = System.currentTimeMillis();
 		consumer.accept(null);
 		long endTime = System.currentTimeMillis();
+		long after = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         p("Execution time : " + (endTime - startTime) + "ms");
+        p("Memory Consumed : " + (after - before));
 	}
 	
 	public static List<List<Integer>> subsets(List<Integer> nums) {
