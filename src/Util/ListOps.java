@@ -18,7 +18,7 @@ public class ListOps {
         benchmark(placeHolder -> p(powerSet(list)));
 	}
 	
-	private static void benchmark(Consumer<String> consumer) {
+	public static void benchmark(Consumer<String> consumer) {
 		long before = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 		long startTime = System.currentTimeMillis();
 		
