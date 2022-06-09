@@ -3,6 +3,7 @@ package Util;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ListOps {
 	public static void p(Object line) { System.out.println(line); }
@@ -12,17 +13,23 @@ public class ListOps {
 			list.add(i);
         
 //        subsets(list).forEach(System.out::println);
-		long startTime = System.currentTimeMillis();
-        subsets(list);
-        long endTime = System.currentTimeMillis();
-        p("Execution time : " + (endTime - startTime) + "ms");
+		Runtime runtime = Runtime.getRuntime();
+	    long usedMemoryBefore = runtime.totalMemory() - runtime.freeMemory();
+	    System.out.println("Used Memory before" + usedMemoryBefore);
+	        // working code here
+	    long usedMemoryAfter = runtime.totalMemory() - runtime.freeMemory();
+	    System.out.println("Memory increased:" + (usedMemoryAfter-usedMemoryBefore));
+	    
         
+        timeBenchmark(placeHolder -> subsets(list));
         // Another implementation
-        p("\n\n");
-        startTime = System.currentTimeMillis();
-        p(powerSet(list));//.subList(0, 2)));
-        endTime = System.currentTimeMillis();
-        p("Execution time : " + (endTime - startTime) + "ms");        
+        timeBenchmark(placeHolder -> p(powerSet(list)));
+	}
+	private static void timeBenchmark(Consumer<String> consumer) {
+		long startTime = System.currentTimeMillis();
+		consumer.accept(null);
+		long endTime = System.currentTimeMillis();
+        p("Execution time : " + (endTime - startTime) + "ms");
 	}
 	
 	public static List<List<Integer>> subsets(List<Integer> nums) {
