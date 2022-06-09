@@ -217,16 +217,17 @@ public class Graph {
 		l.add(new Pair("G","H"));
 		
 		Graph g = new Graph(l);
-		System.out.println(g.getAdjacencyList() + "\n\n");
+		p(g.getAdjacencyList() + "\n\n");
 		
-//		System.out.println(g.pathExists(new Vertex("A"), new Vertex("B")));
-//		System.out.println(g.pathExists(new Vertex("B"), new Vertex("G")));
-//		System.out.println(g.pathExists(new Vertex("B"), new Vertex("DF")));
-//		System.out.println(g.pathExists(new Vertex("H"), new Vertex("F")));
-//		System.out.println(g.pathExists(new Vertex("A"), new Vertex("D")));
-//		System.out.println(g.pathExists(new Vertex("A"), new Vertex("C")));
+//		p(g.pathExists(new Vertex("A"), new Vertex("B")));
+//		p(g.pathExists(new Vertex("B"), new Vertex("G")));
+//		p(g.pathExists(new Vertex("B"), new Vertex("DF")));
+//		p(g.pathExists(new Vertex("H"), new Vertex("F")));
+//		p(g.pathExists(new Vertex("A"), new Vertex("D")));
+//		p(g.pathExists(new Vertex("A"), new Vertex("C")));
 		
-		System.out.println("\n\n" + g.isConnected());
-//		System.out.println(g.hasCycle());
+		p("\n\n" + g.isConnected());
+//		p(g.hasCycle());
 	}
+	static void p(Object line) { p(line); }
 }
