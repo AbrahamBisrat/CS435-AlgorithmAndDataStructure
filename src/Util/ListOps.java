@@ -12,12 +12,17 @@ public class ListOps {
 			list.add(i);
         
 //        subsets(list).forEach(System.out::println);
+		long startTime = System.currentTimeMillis();
         subsets(list);
+        long endTime = System.currentTimeMillis();
+        p("Execution time : " + (endTime - startTime) + "ms");
         
         // Another implementation
         p("\n\n");
+        startTime = System.currentTimeMillis();
         p(powerSet(list));//.subList(0, 2)));
-        
+        endTime = System.currentTimeMillis();
+        p("Execution time : " + (endTime - startTime) + "ms");        
 	}
 	
 	public static List<List<Integer>> subsets(List<Integer> nums) {
